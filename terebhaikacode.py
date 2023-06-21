@@ -54,7 +54,7 @@ def gen(state):
     print(possible_moves)
     return possible_moves
 
-
+##
 def bfs(initial, goal):
     bfspath = {}
     frontier = Queue()
