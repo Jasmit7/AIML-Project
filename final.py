@@ -2,6 +2,9 @@ import tkinter as tk
 import random
 from queue import Queue 
 
+
+
+
 maze = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         [0,1,1,1,1,1,1,0,1,1,1,1,0,1,0,1,1,1,1,0,1,1,1,1,0,0,0,1,1,1,0,1,1,1,1,1,1,1,0,0,0,1,0,0,0,1,1,1,1,0],
         [0,1,0,0,1,0,0,0,0,0,0,1,0,1,0,1,0,0,1,0,1,0,0,1,1,1,1,1,0,1,0,1,0,0,1,0,0,1,0,0,0,1,1,1,1,1,0,0,0,0],
@@ -118,7 +121,7 @@ def initial_position():
     return i,j
 
 def finalPath(window,path):
-    cell_color = "red"
+    cell_color = "green"
     for node in path:
         label = tk.Label(window, width=1, height=1, bg=cell_color)
         label.grid(row=node[0], column=node[1])
@@ -134,12 +137,12 @@ def create_maze_ui():
         for j in range(len(maze[i])):
             cell_color = "black" if maze[i][j] == 0 else "blue"
             if maze[i][j] == 4:
-                cell_color = "white"
+                cell_color = "red"
                 finalPos = [i,j]
             label = tk.Label(window, width=1, height=1, bg=cell_color)
             label.grid(row=i, column=j)
     
-    cell_color = "red"
+    cell_color = "white"
 #    i,j= initial_position()
     i,j = 20,48
     maze[i][j]=5
@@ -160,6 +163,5 @@ def create_maze_ui():
 # #     app = pacmanFace(master=window)
 #     # Start the main loop
     window.mainloop()
-
 
 create_maze_ui()
