@@ -68,7 +68,7 @@ def makeMove(window,maze,node,move):
 
     if maze[i][j]==1:
         maze[i][j]=5
-        cell_color = "purple"
+        cell_color = "#149ae5"
         label = tk.Label(window, width=1, height=1, bg=cell_color)
         label.grid(row=i, column=j)
     node = [i,j]
