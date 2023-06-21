@@ -1,6 +1,8 @@
 import tkinter as tk
 import random
-from queue import Queue 
+from queue import Queue
+from PIL import ImageTk,Image
+import os
 
 
 
@@ -120,10 +122,15 @@ def initial_position():
             flag = False
     return i,j
 
+imgpath='pacman-g08f3a88d2_640.jpg'
 def finalPath(window,path):
     cell_color = "green"
+    
+    #panel.pack(side='bottom',fill='both',expand='yes')
+    #window.mainloop()
     for node in path:
-        label = tk.Label(window, width=1, height=1, bg=cell_color)
+        img = ImageTk.PhotoImage(Image.open(imgpath))
+        label = tk.Label(window, width=1, height=1, bg=cell_color,image=img)
         label.grid(row=node[0], column=node[1])
         window.update()
     
@@ -151,7 +158,7 @@ def create_maze_ui():
     
     ans,path = bfs(window,i,j,finalPos);
     if ans == True:
-        print("Yes, the path is possible/n")
+        print("Yes, the path is possible \n")
     else:
         print("No, the path is not possible for the above maze")
     print("Path is as follows: \n",path)
