@@ -142,7 +142,7 @@ def create_maze_ui():
             label.grid(row=i, column=j)
     
     cell_color = "white"
-#    i,j= initial_position()
+    #i,j= initial_position()
     i,j = 20,48
     maze[i][j]=5
     print(i,j)
