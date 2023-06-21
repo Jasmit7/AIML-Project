@@ -142,8 +142,8 @@ def create_maze_ui():
             label.grid(row=i, column=j)
     
     cell_color = "white"
-    #i,j= initial_position()
-    i,j = 20,48
+    i,j= initial_position()
+    # i,j = 20,48
     maze[i][j]=5
     print(i,j)
     label = tk.Label(window, width=1, height=1, bg=cell_color)
