@@ -1,6 +1,11 @@
 from queue import Queue
 from tkinter import tk
 
+
+window = tk.Tk()
+window.title("Maze UI") 
+
+
 initial = [1, 1]
 goal = [8, 2]
 maze = [
@@ -35,7 +40,7 @@ def moves(state, move):
     if maze[new_i][new_j]==1:
         maze[new_i][new_j]=5
         cell_color="orange"
-        label=tk.label(state,wdith=1,height=1,bg=cell_color)
+        label=tk.label(window,wdith=1,height=1,bg=cell_color)
         label.grid(row=i,column=j)
     return new_state
 
@@ -72,10 +77,10 @@ def bfs(initial, goal):
                 frontier.put((new_state, path + [new_state])) ######################
                 explored.append(str(new_state))
             
-def final(state,path):
+def final(window,path):
     cell_color='green'
     for state in path:
-        label=tk.label(state,width=1,height=1,bg=cell_color)
+        label=tk.label(window,width=1,height=1,bg=cell_color)
         label.grid(row=state[0],column=state[1])
         state.update()
 
