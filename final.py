@@ -3,6 +3,7 @@ import random
 from queue import Queue
 from PIL import ImageTk,Image
 import os
+import time
 
 
 
@@ -67,7 +68,7 @@ def makeMove(window,maze,node,move):
 
     if maze[i][j]==1:
         maze[i][j]=5
-        cell_color = "yellow"
+        cell_color = "purple"
         label = tk.Label(window, width=1, height=1, bg=cell_color)
         label.grid(row=i, column=j)
     node = [i,j]
@@ -123,21 +124,26 @@ def initial_position():
     return i,j
 
 imgpath='pacman-g08f3a88d2_640.jpg'
+
+imgpath1='download.jpeg'
 def finalPath(window,path):
     cell_color = "green"
     
     #panel.pack(side='bottom',fill='both',expand='yes')
     #window.mainloop()
     for node in path:
-        img = ImageTk.PhotoImage(Image.open(imgpath))
-        label = tk.Label(window, width=1, height=1, bg=cell_color,image=img)
+        time.sleep(0.5)
+        img = ImageTk.PhotoImage(Image.open(imgpath1))
+        
+        label = tk.Label(window, width=1, height=1,bg=cell_color,image=img)
         label.grid(row=node[0], column=node[1])
         window.update()
     
 def create_maze_ui():
     # Create the main window
     window = tk.Tk()
-    window.title("Maze UI") 
+    window.title("Maze UI")
+    #window.attributes('-fullscreen', True) 
 
     for i in range(len(maze)):
         for j in range(len(maze[i])):
