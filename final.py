@@ -130,9 +130,8 @@ def finalPath(window,path):
 def create_maze_ui():
     # Create the main window
     window = tk.Tk()
-    window.title("Maze UI")
-#     window.update()
-    # Create labels to represent the maze
+    window.title("Maze UI") 
+
     for i in range(len(maze)):
         for j in range(len(maze[i])):
             cell_color = "black" if maze[i][j] == 0 else "blue"
