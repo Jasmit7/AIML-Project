@@ -58,17 +58,17 @@ maze = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 def makeMove(window,maze,node,move):
     i,j=node[0],node[1]
     if move == 0:
-        i=i+1
+        i=i+1 #right
     if move == 1:
-        i=i-1
+        i=i-1 #left
     if move == 2:
-        j=j-1
+        j=j-1  #up
     if move == 3:
-        j=j+1
+        j=j+1 #down
 
     if maze[i][j]==1:
         maze[i][j]=5
-        cell_color = "#149ae5"
+        cell_color = "yellow"
         label = tk.Label(window, width=1, height=1, bg=cell_color)
         label.grid(row=i, column=j)
     node = [i,j]
@@ -104,14 +104,17 @@ def bfs(window,i,j,finalPos):
     while not q.empty():
         node,path = q.get()
         visited.append(node)
-        window.update()
+        window.update() #tkinter updating every loop
         if checkFinal(node,finalPos)==True:
             return True,path
+        
+            
         for move in genMove(node):
             theMove = makeMove(window,maze,node,move)
             if theMove not in visited:
                 q.put((theMove,path+[theMove]))
                 visited.append(theMove)
+                #print(path)
     return False
         
         
@@ -132,7 +135,7 @@ def finalPath(window,path):
     #panel.pack(side='bottom',fill='both',expand='yes')
     #window.mainloop()
     for node in path:
-        time.sleep(0.5)
+        time.sleep(0.3)
         img = ImageTk.PhotoImage(Image.open(imgpath1))
         
         label = tk.Label(window, width=1, height=1,bg=cell_color,image=img)
@@ -147,7 +150,7 @@ def create_maze_ui():
 
     for i in range(len(maze)):
         for j in range(len(maze[i])):
-            cell_color = "black" if maze[i][j] == 0 else "blue"
+            cell_color = "blue" if maze[i][j] == 0 else "black"
             if maze[i][j] == 4:
                 cell_color = "red"
                 finalPos = [i,j]
@@ -155,8 +158,8 @@ def create_maze_ui():
             label.grid(row=i, column=j)
     
     cell_color = "white"
-    i,j= initial_position()
-    # i,j = 20,48
+    #i,j= initial_position()
+    i,j = 20,48
     maze[i][j]=5
     print(i,j)
     label = tk.Label(window, width=1, height=1, bg=cell_color)
