@@ -105,6 +105,7 @@ def bfs(window,i,j,finalPos):
         node,path = q.get()
         visited.append(node)
         window.update() #tkinter updating every loop
+        time.sleep(0.25)
         if checkFinal(node,finalPos)==True:
             return True,path
         
@@ -145,7 +146,7 @@ def finalPath(window,path):
 def create_maze_ui():
     # Create the main window
     window = tk.Tk()
-    window.title("Maze UI")
+    window.title("Group No.15 (Maze Problem using BFS)")
     #window.attributes('-fullscreen', True) 
 
     for i in range(len(maze)):
